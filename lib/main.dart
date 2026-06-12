@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/dashboard.dart';
-import 'package:flutter_application_1/widgets/widget_button.dart';
-import 'package:flutter_application_1/widgets/widget_textfield.dart';
+import 'package:flutter_application_1/homepage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,76 +32,6 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  final TextEditingController usernameController = TextEditingController();
-  final TextEditingController paswordController = TextEditingController();
-  bool passenable = true;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            WidgetTextfield(
-              hintText: 'Masukkan Username Anda',
-              textEditingController: usernameController,
-              keyboardType: TextInputType.text,
-            ),
-
-            SizedBox(height: 8),
-            WidgetTextfield(
-              hintText: 'Masukkan Password Anda',
-              textEditingController: paswordController,
-              keyboardType: TextInputType.visiblePassword,
-              obscureText: passenable,
-              suffixIcon: IconButton(
-                onPressed: () {
-                  setState(() {
-                    passenable = !passenable;
-                  });
-                },
-                icon: Icon(
-                  passenable ? Icons.visibility : Icons.visibility_off,
-                ),
-              ),
-            ),
-
-            SizedBox(height: 8),
-            WidgetButton(
-              namabutton: 'Tampil Data',
-              onPressed: () {
-                // MaterialPageRoute route = MaterialPageRoute(
-                //   builder: (context) => DashboardPage(),
-                // );
-                // Navigator.push(context, route);
-                setState(() {
-                  usernameController.text;
-                  paswordController.text;
-                });
-              },
-            ),
-
-            SizedBox(height: 8),
-            Text(
-              'Username: ${usernameController.text},\nPassword: ${paswordController.text}',
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
